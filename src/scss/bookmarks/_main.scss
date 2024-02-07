@@ -1,0 +1,61 @@
+.bookmarks {
+  &__top-btn {
+    display: flex;
+    position: fixed;
+    width: $top_btn_width;
+    height:$top_btn_height;
+    top: 0.2em;
+    left: 50%;
+    margin-left: -( calc($top_btn_width / 2) );
+    box-shadow: 0 0 2px 1px #fff;
+    span {
+      position: absolute;
+      width: calc($top_btn_width / 2) * 0.9;
+      height: $top_btn_height * 0.9;
+      margin-top: $top_btn_height * 0.05;
+      margin-left: calc($top_btn_width / 2) * 0.05;
+      background-color: #eee;
+      box-shadow: inset 1px -1px 1px 1px #717070;
+    }
+    &[data-show="show"] {
+      span {
+        left: calc($top_btn_width / 2);
+        margin-left: calc($top_btn_width / 2) * 0.05;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__wrapper {
+    display: none;
+    position: relative;
+    border: 1px solid blue;
+    &[data-show="show"] {
+      display: flex;
+    }
+  }
+  &__collections-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    right: 0em;
+    top: 0;
+    max-width: 300px;
+    background-color: #fff;
+    border: 1px solid;
+  }
+  &__collections-list-header {
+    display: flex;
+    width: 100%;
+  }
+  &__collections-list-btn {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,240 @@
+.ofset-top {
+    width: 100%;
+    height: $_top_header;
+}
+.header {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: $_top_header;
+    background-color: $_bgc_dark;
+    color: $_color_light;
+    &__logo {
+        position: relative;
+        margin-left: 0.25em;
+        padding-top: 0.1em;
+        text-decoration: none;
+        color: rgb(187, 127, 244);
+        font-size: 1.5em;
+        text-shadow: 0px 0px 2px rgb(255, 255, 255);
+        &::before {
+            position: absolute;
+            content: "";
+            width: .7em;
+            height: 2px;
+            bottom: 0.1em;
+            left: 0em;
+            background-color: #fff;
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 2px;
+            bottom: 0.1em;
+            left: 0.8em;
+            background-color: #fff;
+        }
+        &:hover {
+            &::before {
+                width: 0;
+            }
+            &::after {
+                width: .7em;
+            }
+        }
+    }
+    &-nav {
+        position: fixed;
+        &__burger {
+            cursor: pointer;
+            position: fixed;
+            top: 0em;
+            left: 4em;
+            width: $_top_header;
+            height: $_top_header;
+            span {
+                display: flex;
+                position: absolute;
+                width: $_top_header;
+                height: 0.2em;
+                top: 0.4em;
+                background-color: #fff;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    background-color: #ffffff;
+                    width: $_top_header;
+                    height: 0.2em;
+                    top: 0.5em;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background-color: #ffffff;
+                    width: $_top_header;
+                    height: 0.2em;
+                    top: 1.0em;
+                }
+            }
+            &[data-show="show"] {
+                span {
+                    display: flex;
+                    position: absolute;
+                    width: $_top_header;
+                    height: 0.2em;
+                    top: 0.4em;
+                    background-color: #fff;
+                    width: 0;
+                    &::before {
+                        transform: rotate(-45deg);
+                        top: 0.5em;
+                    }
+                    &::after {
+                        top: 0.5em;
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+        }
+        &__menu-wrapper {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: $_top_header;
+            background-color: #111111b5;
+            width: 100%;
+            height: 100vh;
+            &[data-show="show"] {
+                display: flex;
+            }
+        }
+        &__menu {
+            user-select: none;
+            list-style: none;
+            position: fixed;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: -3500px;
+            top: $_top_header;
+            padding: 0;
+            max-width: 350px;
+            width: 70%;
+            background-color: $_bgc_light;
+            color: $_color_dark;
+            box-shadow: 0 0 1px 1px;
+            //transition: all 3s ease-out allow-discrete;
+            &[data-show="show"] {
+                margin-left: 0;
+            }
+            li {
+                box-sizing: border-box;
+                margin-top: 1em;
+                margin-bottom: 1em;
+                width: 100%;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    display: block;
+                    cursor: pointer;
+                    box-sizing: border-box;
+                    width: 100%;
+                    padding: 0.5em 0.25em;
+                    text-decoration: none;
+                    font-size: 1.2em;
+                    color: $_color_nav_link;
+                    &::first-letter {
+                        text-transform: uppercase;
+                    }
+                    &:hover {
+                        color: $_color_nav_hover_link;
+                    }
+                }
+            }
+        }
+    }
+    &__settings-btn {
+        &-wrapper {
+            display: flex;
+            position: fixed;
+            right: 0.5em;
+        }
+        &-container {
+            color: #fff;
+        }
+        display: flex;
+        justify-content: center;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        &:hover {
+            cursor: pointer;
+        }
+        &-fsz {
+            font-size: 1.6em;
+        }
+        &-theme {
+            width: $_top_header - 0.5;
+            height: $_top_header - 0.5;
+            border-radius: 50%;
+            &[name="theme-light"], &[name="theme-dark"] {
+                display: none;
+                &[data-show="show"] {
+                    display: flex;
+                }
+            }
+            &[name="theme-dark"] {
+                position: relative;
+                background-color: #fff;
+                top: 0.1em;
+                &::after {
+                    position: absolute;
+                    content: "";
+                    right: -0.4em;
+                    top: -0.4em;
+                    width: calc($_top_header / 1.3);
+                    height: calc($_top_header / 1.3);
+                    border-radius: 50%;
+                    background-color: $_bgc_dark;
+                }
+            }
+            &[name="theme-light"] {
+                position: relative;
+                top: 0.1em;
+                background-color: #f7e709;
+                box-shadow: white 0 0 10px 3px;
+            }
+        }
+        &-fsz {
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &__settings-fsz-menu {
+        display: none;
+        flex-wrap: wrap;
+        position: absolute;
+        top: $_top_header;
+        right: 0;
+        justify-content: center;
+        width: 4em;
+        background-color: $_bgc_dark;
+        color: $_color_light;
+        &[data-show="show"] {
+            display:flex;
+        }
+        &-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 2em;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            font-weight: 900;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
